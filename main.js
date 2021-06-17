@@ -1,29 +1,26 @@
-$("#trigger").click(function () {
-  var apples = new Date();
-  var oranges = new Date(2021, 12, 25);
-  var pears = parseInt((oranges - apples) / (24 * 3600 * 1000));
+var currentDate = new Date();
+var christmasDate = new Date(2021, 11, 25); //months: january = 0, february = 1, .., december: 11)
+var newYearDate = new Date(2022, 0, 01);
+var valentinesDayDate = new Date(2022, 1, 14);
 
-  $("#days-until").append(
-    "<li>" + pears.toString() + " days until Christmas</li>"
+function countDaysUntil(date) {
+  return (date - currentDate) / (24 * 3600 * 1000);
+}
+
+function showDaysUntil(date, dayString) {
+  $("#days-until-list").append(
+    "<li>" +
+      parseInt(countDaysUntil(date) + 1).toString() +
+      " days until " +
+      dayString +
+      "</li>"
   );
-});
+}
 
-$("#trigger").click(function () {
-  var apples = new Date();
-  var oranges = new Date(2022, 01, 01);
-  var pears = parseInt((oranges - apples) / (24 * 3600 * 1000));
+function showDays() {
+  showDaysUntil(christmasDate, "Christmas");
+  showDaysUntil(newYearDate, "New Year");
+  showDaysUntil(valentinesDayDate, "Valentines Day");
+}
 
-  $("#days-until").append(
-    "<li>" + pears.toString() + " days until New Year</li>"
-  );
-});
-
-$("#trigger").click(function () {
-  var apples = new Date();
-  var oranges = new Date(2022, 02, 14);
-  var pears = parseInt((oranges - apples) / (24 * 3600 * 1000));
-
-  $("#days-until").append(
-    "<li>" + pears.toString() + " days until Valentines Day</li>"
-  );
-});
+$("#show-days-button").click(showDays);
