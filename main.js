@@ -17,10 +17,10 @@ function showDaysUntil(date, dayString) {
   );
 }
 
-function showDays() {
+function showAllDays() {
   showDaysUntil(christmasDate, "Christmas");
   showDaysUntil(newYearDate, "New Year");
   showDaysUntil(valentinesDayDate, "Valentines Day");
 }
 
-$("#show-days-button").click(showDays);
+$("#show-days-button").click(showAllDays);
